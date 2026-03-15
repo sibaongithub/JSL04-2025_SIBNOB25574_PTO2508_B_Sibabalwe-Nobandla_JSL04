@@ -1,40 +1,70 @@
-# JSL04 Project Brief: Dynamic Task Display & Modal View
+# [JSL04] Submission: Dynamic Task Display & Modal View
 
-## Overview
+## Project Overview
+This project enhances a kanban board application by adding dynamic task rendering and interactive modal functionality. Tasks are now displayed dynamically from data and can be edited through a modal interface.
 
-In this project, you will dynamically display tasks from the **given initial data** on the DOM using JavaScript. Tasks should be placed into the correct **Kanban board columns** based on their status, and clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.**
+## Changes Made
 
-## Before You Begin
+### HTML (index.html)
+- Added modal structure at the bottom of the body
+- Changed board container from static cards to dynamic rendering with `id="boardContainer"`
+- Added modal backdrop for dimming effect
+- Included form elements (title input, description textarea, status select)
+- Added modal styling with animations (fadeIn, slideUp, slideIn)
 
-**Check the project user stories in your student dashboard and the updated Figma Design** before you start building.
+### JavaScript (scripts.js)
+- Updated task data to match design specifications (8 tasks total)
+- Added `COLUMNS` constant for column configuration
+- Added `currentTask` variable to track selected task
+- Created `getTasksByStatus()` function to filter tasks by status
+- Created `createTaskCard()` function to build individual task cards
+- Created `createColumn()` function to build complete columns
+- Created `renderBoard()` function to render entire kanban board
+- Created `openTaskModal()` function to display task details in modal
+- Created `closeTaskModal()` function to close modal
+- Created `handleTaskSubmit()` function to save task changes
+- Created `init()` function to set up event listeners and initialize board
+- Added event listeners for modal interactions (close button, backdrop click, Escape key)
 
-## Figma Design Link
+## Features Implemented
 
-Check the updated Figma Design: [Figma Link](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=0-1&p=f&t=Ki0CZk0RAjrk9Fhs-0)
+### Dynamic Task Rendering
+Tasks automatically populate from the `initialTasks` array and appear in the correct columns based on their status.
 
-## Key Objectives
+### Interactive Modal
+Clicking any task card opens a modal with:
+- Editable title field
+- Editable description field
+- Status dropdown (todo, doing, done)
+- Close button (X)
 
-### Dynamic Task Display & Interaction
+### Task Status Management
+Changing a task's status in the modal automatically moves it to the correct column when saved.
 
-- Dynamically generate **task elements** from the given initial data and insert them into the DOM.
-- Ensure tasks are placed in the **correct columns** ("To Do", "In Progress", "Done") based on their status.
-- Clicking a task should **open a modal** displaying its details.
-- The modal should include:
-  - **Editable input fields** for the task title and description.
-  - **A select dropdown** showing the current status with other status options available.
-  - **A close button** that allows users to exit the modal easily.
+### Responsive Design
+The board works on both desktop and mobile devices with appropriate layout adjustments.
 
-### Design & Responsiveness
+### Animations
+- Modal backdrop fades in
+- Modal slides up from bottom
+- Task cards slide in when rendered
+- Smooth hover effects on cards
 
-- Ensure the **modal matches the Figma design**, including a **backdrop effect** for focus.
-- Implement a **fully responsive modal** that works on both desktop and mobile devices.
+## How to Run
+1. Open `index.html` in a web browser
+2. Tasks will automatically load and display
+3. Click any task to view and edit details
+4. Change status to move tasks between columns
 
-### Code Structure & Maintainability
+## Technologies Used
+- HTML5
+- CSS3 (Tailwind CSS)
+- JavaScript (ES6+)
+- Plus Jakarta Sans font
 
-- Structure JavaScript using **modular, single-responsibility functions**.
-- Use **descriptive and meaningful variable and function names** for clarity.
-- Add **JSDoc comments** to major functions, describing their purpose, parameters, and return values for better documentation.
-
-## Expected Outcome
-
-A fully functional **dynamic task board** where tasks appear under the correct columns, and users can **open a modal to view/edit** task details. The project will follow **clean, well-documented, and maintainable code practices**, ensuring a professional and scalable implementation.
+## File Structure
+```
+├── index.html          # Main HTML with modal structure
+├── scripts.js          # JavaScript for dynamic rendering and modal
+└── assets/             # Logo and icon files
+```
